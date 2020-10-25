@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div>
+    <% if session[:user_id] %>
+      <%= "Здравствуйте, #{@current_user.name}!" %>
+      <%= link_to 'Выйти', destroy_session_path %>
+    <% else %>
+      <%= link_to 'Войти', login_path %>
+    <% end %>
+    </div>
+    <%= yield %>
+  </body>
+</html>
